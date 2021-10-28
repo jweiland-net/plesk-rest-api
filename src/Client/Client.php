@@ -3,8 +3,7 @@
 namespace JWeiland\PleskRestApi\Client;
 
 use GuzzleHttp;
-use JWeiland\PleskRestApi\Client\Request\AbstractRequest;
-use JWeiland\PleskRestApi\Client\Request\Cli\Subscription;
+use JWeiland\PleskRestApi\Client\Request\RequestInterface;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -52,12 +51,12 @@ class Client
 
     /**
      * @param $request
-     * @return string
+     * @return array|mixed|string
      */
-    public function execute(AbstractRequest $request)
+    public function execute(RequestInterface $request)
     {
         try {
-            $result = false;
+            $result = [];
             $response = $this->guzzleClient->request(
                 $request->getMethod(),
                 $request->getPath(),
