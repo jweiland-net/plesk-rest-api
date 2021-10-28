@@ -1,6 +1,6 @@
 {
 	"name": "jweiland/plesk-rest-api",
-	"description": "Hostbill connection to Plesk REST API",
+	"description": "PHP Client for hte Plesk REST API",
 	"license": "GPL-2.0-or-later",
 	"keywords": ["plesk", "REST Api"],
 	"homepage": "http://www.jweiland.net",
