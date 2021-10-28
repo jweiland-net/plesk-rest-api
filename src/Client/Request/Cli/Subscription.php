@@ -12,6 +12,9 @@ class Subscription extends AbstractRequest
 
     public function setRequestBody(array $parameters)
     {
-        $this->body = '{ "params": ' . json_encode($parameters) . '}';
+        $parameters = [
+            'params' => $parameters
+        ];
+        $this->body = json_encode($parameters);
     }
 }
