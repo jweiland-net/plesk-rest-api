@@ -45,12 +45,12 @@ class Client
 
         $this->guzzleClient = new GuzzleHttp\Client([
             'base_uri' => $pleskServerUrl . ':' . $pleskPort . '/api/v2/',
-            'timeout' => 2.0,
+            'timeout' => 16.0,
         ]);
     }
 
     /**
-     * @param $request
+     * @param RequestInterface $request
      * @return array|mixed|string
      */
     public function execute(RequestInterface $request)
@@ -75,9 +75,11 @@ class Client
             return $result;
         } catch (\GuzzleHttp\Exception\GuzzleException $e) {
             $result = sprintf(
-                'Status code: %s - %d!',
+                'Status code: %d - %s - %d -%s!',
                 $e->getCode(),
-                $e->getMessage()
+                $e->getMessage(),
+                $e->getLine(),
+                $e->getFile()
             );
             return $result;
         }
